@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Εγγραφή{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>🆕 Δημιουργία Λογαριασμού</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Εγγραφή</button>
+        <p style="text-align:center; margin-top: 20px;">
+            <a href="/">⬅️ Επιστροφή στην αρχική</a>
+        </p>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+{% block title %}{{ form_title }}{% endblock %}
+
+{% block content %}
+<div class="task-form-container">
+    <h2>{{ form_title }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-buttons">
+            <button type="submit" class="btn btn-create">💾 Αποθήκευση</button>
+            <a href="{% url 'tasks:task_list' %}" class="btn">❌ Ακύρωση</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

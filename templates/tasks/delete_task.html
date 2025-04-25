@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Διαγραφή Εργασίας{% endblock %}
+
+{% block content %}
+<div class="task-form-container">
+    <h2>🗑️ Διαγραφή Εργασίας</h2>
+    <p>Είσαι σίγουρος/η ότι θέλεις να διαγράψεις την εργασία <strong>"{{ task.title }}"</strong>;</p>
+
+    <form method="post" id="delete-form">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-delete" id="confirm-delete-btn">Ναι, Διαγραφή</button>
+        <a href="{% url 'tasks:task_list' %}" class="btn">Ακύρωση</a>
+    </form>
+</div>
+
+<div id="popup-overlay" class="popup-overlay">
+    <div class="popup-content">
+        <h3>Επιβεβαίωση</h3>
+        <p>Θέλεις σίγουρα να διαγράψεις την εργασία <strong>"{{ task.title }}"</strong>;</p>
+        <button id="popup-confirm" class="btn btn-delete">✅ Ναι, Διαγραφή</button>
+        <button onclick="closePopup()" class="btn">❌ Ακύρωση</button>
+    </div>
+</div>
+
+</div>
+
+<!-- Σύνδεση με το νέο αρχείο JavaScript -->
+ {% load static %}
+<script src="{% static 'js/popup.js' %}"></script>
+
+{% endblock %}
+

@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="task-form-container">
+    <h2>Φόρμα Επικοινωνίας</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-submit">Αποστολή</button>
+        <p style="text-align:center; margin-top: 20px;">
+            <a href="/">⬅️ Επιστροφή στην αρχική</a>
+        </p>
+    </form>
+</div>
+{% endblock %}

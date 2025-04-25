@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Tasks{% endblock %}
+
+{% block content %}
+<div class="task-page">
+    <div class="calendar-container">
+        <h3>📅 Ημερολόγιο</h3>
+        <div id="datepicker"></div>
+    </div>
+    
+
+    <div class="task-list-container">
+        <h2>📌 Εργασίες για <span id="selected-date">{{ selected_date }}</span></h2>
+        <ul id="task-list">
+            {% for task in tasks %}
+                <li>
+                    <strong>{{ task.title }}</strong> - {{ task.description }}
+                    {% if task.completed %} ✅ {% endif %}
+
+                    <div class="task-actions">
+                        <a href="{% url 'tasks:create_task' %}" class="btn btn-create">➕ Νέα Εργασία</a>
+                        <a href="{% url 'tasks:edit_task' task.id %}" class="btn btn-edit">✏️ Επεξεργασία</a>
+                        <a href="{% url 'tasks:delete_task' task.id %}" class="btn btn-delete">🗑️ Διαγραφή</a>
+                    </div>
+                </li>
+            {% empty %}
+                <li>Δεν υπάρχουν εργασίες για αυτή την ημέρα.</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'tasks:create_task' %}" class="btn btn-create">➕ Νέα Εργασία</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_head %}
+<!-- Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<!-- (Προαιρετικά) Ελληνικά -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/gr.js"></script>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="{% static 'js/calendar.js' %}"></script>
+{% endblock %}

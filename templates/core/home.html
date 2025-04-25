@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+
+{% block title %}Task Manager - Αρχική {% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <h1>Task Manager</h1>
+
+    {% if user.is_authenticated %}
+        <p>Γειά σου, {{ user.username }}!</p>
+        <a href="/tasks/">Πήγαινε στις εργασίες σου</a>
+    {% else %}
+        <p>Καλώς ήρθες! Για να ξεκινήσεις:</p>
+        <div class="button-group">
+            <a class="btn" href="{% url 'login' %}">🔐 Σύνδεση</a>
+            <a class="btn" href="{% url 'register' %}">🆕 Εγγραφή</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
