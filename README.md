@@ -12,7 +12,7 @@
 
 ## 🚀 Εγκατάσταση
 
-1. Κλωνοποίησε το αποθετήριο:
+1. Κλωνοποίησε:
    ```bash
    git clone https://github.com/your-username/task-manager.git
    cd task-manager
@@ -29,7 +29,7 @@
    pip install -r requirements.txt
    ```
 
-4. Εκτέλεσε τις μεταναστεύσεις και ξεκίνα τον server:
+4. Εκτέλεσε τις εντολές και ξεκίνα τον server:
    ```bash
    python manage.py migrate
    python manage.py runserver
@@ -42,4 +42,4 @@
 
 ---
 
-> Made with ❤️ by Λευτέρης Μπαλαμπάνης
+> Made by Λευτέρης Μπαλαμπάνης
